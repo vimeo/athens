@@ -226,7 +226,11 @@ spec:
           name: {{ template "fullname" . }}-ssh-git-servers
       - name: ssh-git-servers-secret
         secret:
+          {{- if .Values.sshGitServersKeysExistingSecret }}
+          secretName: {{ .Values.sshGitServersKeysExistingSecret }}
+          {{- else -}}
           secretName: {{ template "fullname" . }}-ssh-git-servers
+          {{- end }}
       {{- end }}
       {{- if .Values.gitconfig.enabled }}
       - name: gitconfig

@@ -144,6 +144,11 @@ sshGitServers: {}
     ## ssh port
   #  port: 22
 
+# Store the SSH keys for the sshGitServers above in a pre-existing kubernetes Secret
+# This chart expects each data key in the Secret to be named like:
+#   id_rsa-<sshGitServers.host>
+# sshGitServersKeysExistingSecret: 
+
 goGetWorkers: 3
 
 serviceAccount:
